@@ -22,6 +22,11 @@ export const UserDetails = () => {
 export const UserDetailsLoader = async ({ params }) => {
     const { userid } = params;
     const res = await fetch("https://jsonplaceholder.typicode.com/users/" + userid);
-    return res.json();
+    // console.log(res);
+    if (res.status === 404) {
+        throw new Response("Resource Not Found", { status: 404 })
+        // throw new Error("Resource Not Found", { status: 404 })
+    }
 
+    return res.json();
 }

@@ -10,11 +10,11 @@ export const Users = () => {
             {
                 users.map((user) => {
                     return (
-                        <div className="card">
+                        <div className="card" key={user.id}>
                             <h3>
                                 <i className="fa-solid fa-caret-right"></i>{user.name}
                             </h3>
-                            <Link to={user.id.toString()} key={user.id}>
+                            <Link to={user.id.toString()} >
                                 <i className="fa-regular fa-square-caret-right"></i>
                             </Link>
                         </div>
@@ -27,6 +27,11 @@ export const Users = () => {
 export const UsersLoader = async () => {
 
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    if (res.status === 404) {
+        throw new Response("Resource Not Found", { status: 404 })
+        // throw new Error("Resource Not Found", { status: 404 })
+    }
+
     return res.json();
 }
 

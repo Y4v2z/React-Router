@@ -1,7 +1,8 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigation } from "react-router-dom";
+import { Loading } from "../pages/Loading";
 
 export const MainLayout = () => {
-
+    const navigation = useNavigation();
     return (
         <div className="main-layout">
             <header className="container">
@@ -14,6 +15,9 @@ export const MainLayout = () => {
                 </nav>
             </header>
             <main className="container">
+                {navigation.state === "loading" && <Loading />}
+                {navigation.state === "submitting" && <Loading />}
+
                 <Outlet />
             </main>
         </div>
