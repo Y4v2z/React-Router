@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router";
 import { Link } from "react-router-dom";
-
 export const UserDetails = () => {
     const user = useLoaderData();
     return (
@@ -18,10 +17,13 @@ export const UserDetails = () => {
         </div>
     );
 };
-
 export const UserDetailsLoader = async ({ params }) => {
     const { userid } = params;
     const res = await fetch("https://jsonplaceholder.typicode.com/users/" + userid);
+    console.log(res);
+    if (res.status === 404) {
+        throw new Response("Resource Not Found", { status: 404 })
+        // throw new Error("Resource Not Found", { status: 404 })
+    }
     return res.json();
-
 }
