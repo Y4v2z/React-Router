@@ -1,5 +1,4 @@
 import { Form, redirect, useActionData } from "react-router-dom";
-
 export const Contact = () => {
     const errors = useActionData();
     return (
@@ -24,15 +23,11 @@ export const Contact = () => {
         </div>
     );
 }
-
 export const contactAction = async ({ request }) => {
     const data = await request.formData();
-
     const email = data.get("email");
     const message = data.get("message");
-
     const errors = {};
-
     if (typeof email !== "string" || !email.includes("@")) {
         errors.email = "Geçerli bir mail adresi giriniz "
     };
@@ -42,5 +37,6 @@ export const contactAction = async ({ request }) => {
     if (Object.keys(errors).length) {
         return errors;
     }
+    // await sendMessage(email, message)
     return redirect("/")
 }

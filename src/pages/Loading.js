@@ -1,4 +1,3 @@
-
 export const Loading = () => {
     return (
         <div className="fa-3x">
@@ -6,11 +5,3 @@ export const Loading = () => {
         </div>
     );
 }
-
-
-
-
-
-// export function Loading(){
-
-// }

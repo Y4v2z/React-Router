@@ -1,6 +1,5 @@
 import { NavLink, Outlet, useNavigation } from "react-router-dom";
 import { Loading } from "../pages/Loading";
-
 export const MainLayout = () => {
     const navigation = useNavigation();
     return (
@@ -17,12 +16,9 @@ export const MainLayout = () => {
             <main className="container">
                 {navigation.state === "loading" && <Loading />}
                 {navigation.state === "submitting" && <Loading />}
-
                 <Outlet />
             </main>
         </div>
     );
 }
-// Outlet hakkımızda ve home gibi sayfaların içeriğini getirir.
-
 
