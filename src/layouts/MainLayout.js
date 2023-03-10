@@ -8,9 +8,9 @@ export const MainLayout = () => {
                 <h1>React Router</h1>
                 <nav>
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="/about">About</NavLink>
-                    <NavLink to="/help">Help</NavLink>
-                    <NavLink to="/users">Users</NavLink>
+                    <NavLink to="about">About</NavLink>
+                    <NavLink to="help">Help</NavLink>
+                    <NavLink to="users">Users</NavLink>
                 </nav>
             </header>
             <main className="container">
